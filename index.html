@@ -653,8 +653,80 @@
           </div>
         </div>
       </div>
+      <br />
+      <div class="row">
+        <div class="col">
+          <h1 class="display-4">Compile & Deploy</h1>
+          <hr />
+          <p>This step turns the human readable code you just edited into machine executable programs. This step is easiest in Linux, but there are <a href="https://github.com/turtlecoin/turtlecoin#how-to-compile">instructions for Windows and Apple also.</a></p>
+          <p>
+            <em>
+          These instructions are meant for Ubuntu LTS, visit the link above for Windows and Apple instructions.    
+            </em>
+          </p>
 
+        </div>
+      </div>
 
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <code>~/your-dev-folder/</code>&nbsp;&nbsp;Compile Your Code
+            </div>
+            <div class="card-body">
+              <p>Open an Ubuntu LTS terminal prompt, and type the following commands.</p>
+                <pre class="text-white bg-dark">
+                  <code>
+  sudo apt update</code>
+                </pre>
+                <pre class="text-white bg-dark">
+                  <code>
+  sudo apt upgrade -y</code>
+                </pre>
+                <pre class="text-white bg-dark">
+                  <code>
+  sudo apt-get install -y build-essential python-dev gcc g++ git cmake libboost-all-dev</code>
+                </pre>
+                <pre class="text-white bg-dark">
+                  <code>
+  mkdir build && cd build</code>
+                </pre>
+                <pre class="text-white bg-dark">
+                  <code>
+  cmake .. && make</code>
+                </pre>
+                <p>The compile process can take up to an hour on slower systems. You will need adequate RAM or Swap space in order to compile without errors. Compiling on a cheap VPS will often give Swap errors because of this.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br />
+
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <code>~/your-seed-nodes/</code>&nbsp;&nbsp;Deploy Your Code
+            </div>
+            <div class="card-body">
+              <p>On the seed nodes listed in your <code>CryptoNoteConfig.h</code>, launch your daemon that you just compiled. In most cases, it is best to run the daemon inside tmux while using a loop or <a href="https://github.com/turtlecoin/turtlecoind-ha">high availability monitor</a> to keep the seeds running. High volume daemons can crash, and this helps maintain uptime. This is especially important if you have a high mixin level or fast block time.</p>
+                <pre class="text-white bg-dark">
+                 <code>
+  while true ; do ./TurtleCoind ; done</code>
+                </pre>
+                <p>This is the most basic loop to automatically relaunch the daemon if it fails, but it is recommended to use a <a href="https://github.com/turtlecoin/turtlecoind-ha">high availability monitor</a>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="float-right">
+        <h3><a href="https://turtlecoin.github.io/index2.html">Next Section >></a></h3>
+        <h6>Advanced Parameters</h6>
+    </div>
+      
     </div> <!-- main container -->
 
 
