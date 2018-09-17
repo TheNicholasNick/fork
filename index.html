@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>Forking TurtleCoin</title>
+  </head>
+  <body>
+    <div class="container" style="padding-top: 60px;">
+      <div class="row">
+        <div class="jumbotron jumbotron-fluid">
+          <div class="container">
+            <div class="col">
+              <h1 class="display-1">Forking TurtleCoin</h1>
+                <h5 class="display-5">This is the definitive guide to creating your own blockchain based on TRTL technology, and launching a successful community around it.</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h1 class="display-4">Part 1 - The Coin</h1>
+          <h4>The Minimum Viable Changes</h4>
+          <hr />
+          <p>These are the minimum changes you need to make in order to create a TRTL fork. This is suitable for making a TRTL testnet, for example.</p>
+          <p>
+            <em>
+          Change the following blocks of code to suit your fork's parameters.    
+            </em>
+          </p>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <code>src/CryptoNoteConfig.h</code>&nbsp;&nbsp;Network ID
+            </div>
+            <div class="card-body">
+                <pre class="text-white bg-dark">
+                  <code>
+  const static   boost::uuids::uuid CRYPTONOTE_NETWORK         =
+  {
+      {  0xb5, 0x0c, 0x4a, 0x6c, 0xcf, 0x52, 0x57, 0x41, 0x65, 0xf9, 0x91, 0xa4, 0xb6, 0xc1, 0x43, 0xe9  }
+  };
+                  </code>
+                </pre>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <code>src/CryptoNoteConfig.h</code>&nbsp;&nbsp;Blockchain Cache Folder
+            </div>
+            <div class="card-body">
+                <pre class="text-white bg-dark">
+                  <code>
+  const char     CRYPTONOTE_NAME[]                    = "TurtleCoin";
+                  </code>
+                </pre>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <code>src/CryptoNoteConfig.h</code>&nbsp;&nbsp;Seed Nodes
+            </div>
+            <div class="card-body">
+                <pre class="text-white bg-dark">
+                  <code>
+  const char* const SEED_NODES[] = {
+    "206.189.142.142:11897",//rock
+    "145.239.88.119:11999", //cision
+    "142.44.242.106:11897", //tom
+    "165.227.252.132:11897" //iburnmycd };
+                  </code>
+                </pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>
