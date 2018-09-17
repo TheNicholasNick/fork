@@ -24,8 +24,7 @@
       </div>
       <div class="row">
         <div class="col">
-          <h1 class="display-4">Part 1 - The Coin</h1>
-          <h4>The Minimum Viable Changes</h4>
+          <h1 class="display-4">Minimum Viable Coin</h1>
           <hr />
           <p>These are the minimum changes you need to make in order to create a TRTL fork. This is suitable for making a TRTL testnet, for example.</p>
           <p>
@@ -44,13 +43,11 @@
               <code>src/CryptoNoteConfig.h</code>&nbsp;&nbsp;Network ID
             </div>
             <div class="card-body">
-                <pre class="text-white bg-dark">
-                  <code>
+                <pre class="text-white bg-dark"><code>
   const static   boost::uuids::uuid CRYPTONOTE_NETWORK         =
   {
       {  0xb5, 0x0c, 0x4a, 0x6c, 0xcf, 0x52, 0x57, 0x41, 0x65, 0xf9, 0x91, 0xa4, 0xb6, 0xc1, 0x43, 0xe9  }
-  };
-                  </code>
+  };</code>
                 </pre>
             </div>
           </div>
@@ -66,8 +63,7 @@
             <div class="card-body">
                 <pre class="text-white bg-dark">
                   <code>
-  const char     CRYPTONOTE_NAME[]                    = "TurtleCoin";
-                  </code>
+  const char     CRYPTONOTE_NAME[]                    = "TurtleCoin";</code>
                 </pre>
             </div>
           </div>
@@ -87,14 +83,579 @@
     "206.189.142.142:11897",//rock
     "145.239.88.119:11999", //cision
     "142.44.242.106:11897", //tom
-    "165.227.252.132:11897" //iburnmycd };
-                  </code>
+    "165.227.252.132:11897" //iburnmycd };</code>
                 </pre>
             </div>
           </div>
         </div>
       </div>
-    </div>
+
+      <br />
+      
+      <div class="row">
+        <div class="col">
+          <h1 class="display-4">Fully Custom Network</h1>
+          <hr />
+          <p>This is the full set of changes you make to create your own basic fork of the TurtleCoin code. When we finish this section, you'll have a complete rebrand of TurtleCoin with your own name on it.</p>
+          <p>
+            <em>
+          Change the following blocks of code to suit your fork's parameters.    
+            </em>
+          </p>
+        </div>
+      </div> <!-- custom network row -->
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              Creator's License
+            </div>
+            <div class="card-body">
+              <p>Before we begin, you'll see a license at the beginning of every file. It is important not to remove or alter that license statement other than how we've detailed here.</p>
+                <pre class="text-white bg-dark">
+                  <code>
+  // Copyright (c) 2012-2017, The CryptoNote developers, The Bytecoin developers
+  // Copyright (c) 2014-2018, The Monero Project
+  // Copyright (c) 2018, The TurtleCoin Developers
+  // Copyright (c) 2018, YOUR NAME GOES HERE
+  // 
+  // Please see the included LICENSE file for more information.</code>
+                </pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br />
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <code>src/CMakeLists.txt</code>&nbsp;&nbsp;Binary Names
+            </div>
+            <div class="card-body">
+              <p>Change the property output names to suit your project.</p>
+                <pre class="text-white bg-dark">
+                  <code>
+  # Finally build the binaries
+  set_property(TARGET TurtleCoind PROPERTY OUTPUT_NAME "TurtleCoind")
+  set_property(TARGET zedwallet PROPERTY OUTPUT_NAME "zedwallet")
+  set_property(TARGET service PROPERTY OUTPUT_NAME "turtle-service")
+  set_property(TARGET miner PROPERTY OUTPUT_NAME "miner")
+
+  # Additional make targets
+  add_custom_target(pool DEPENDS TurtleCoind service)
+  add_custom_target(solominer DEPENDS TurtleCoind zedwallet miner)
+  add_custom_target(cli DEPENDS TurtleCoind zedwallet)</code>
+                </pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br />
+      
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <code>src/CryptoNoteConfig.h</code>&nbsp;&nbsp;Block Time
+            </div>
+            <div class="card-body">
+              <p>Block time is measured in seconds. TRTL has 30 second blocks.</p>
+                <pre class="text-white bg-dark">
+                  <code>
+  const uint64_t DIFFICULTY_TARGET                      = 30; // seconds</code>
+                </pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br />
+            
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <code>src/CryptoNoteConfig.h</code>&nbsp;&nbsp;Address Prefix
+            </div>
+            <div class="card-body">
+              <p>TurtleCoin has an address prefix of <code>TRTL</code>, and every wallet address generated begins with the wallet prefix.</p>
+              <p>The address prefix is calculated using the generator on <a href="cryptonotestarter.org/tools.html" target="_blank">this page</a>. The prefix you generate will be in hexadecimal, ex: <code>0xb1</code>, but the config works best with decimal. You can convert hexadecimal to decimal using <a href="https://www.rapidtables.com/convert/number/hex-to-decimal.html">this converter</a>.</p>
+                <pre class="text-white bg-dark">
+                  <code>
+  const uint64_t CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX = 3914525;</code>
+                </pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br />
+      
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <code>src/CryptoNoteConfig.h</code>&nbsp;&nbsp;Unlock Mined Coins
+            </div>
+            <div class="card-body">
+              <p>Mined coins need to wait about 20 minutes before being awarded to miners. Adjust the number of blocks in this parameter to suit your coin. TRTL has 30 second blocks, so 40 means 20 minutes.</p>
+                <pre class="text-white bg-dark">
+                  <code>
+  const uint32_t CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW          = 40;</code>
+                </pre>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <code>src/CryptoNoteConfig.h</code>&nbsp;&nbsp;Coin Supply
+            </div>
+            <div class="card-body">
+              <p>Coin supply is measured in Atomic Units. The amount of decimal places you have will determine how many coins this number truly represents. This is the minimum amount of divisible units in your network.</p>
+              <p><em>TurtleCoin has 1 Trillion total coins, and only two decimal places, so it has 10 Trillion Atomic Units.</em></p>
+                <pre class="text-white bg-dark">
+                  <code>
+  const uint64_t MONEY_SUPPLY          = UINT64_C(100000000000000);</code>
+                </pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br />
+
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <code>src/CryptoNoteConfig.h</code>&nbsp;&nbsp;Decimal Points
+            </div>
+            <div class="card-body">
+              <p>Change this number to suit your needs.</p>
+              <p><em>TurtleCoin has 2 decimal points, Bitcoin has 8.</em></p>
+                <pre class="text-white bg-dark">
+                  <code>
+  const size_t   CRYPTONOTE_DISPLAY_DECIMAL_POINT      = 2;</code>
+                </pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br />
+      
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <code>src/CryptoNoteConfig.h</code>&nbsp;&nbsp;Difficulty Algorithm Milestones
+            </div>
+            <div class="card-body">
+              <p>These are different versions of our difficulty algorithm, and the heights at which you'll upgrade to each one. It is best to activate them in the first 4 blocks of your chain so that you can get to the most recent version sooner.</p>
+                <pre class="text-white bg-dark">
+                  <code>
+  const uint32_t ZAWY_DIFFICULTY_BLOCK_INDEX                = 187000;
+
+  ...
+  
+  const uint64_t LWMA_2_DIFFICULTY_BLOCK_INDEX              = 620000;
+  const uint64_t LWMA_2_DIFFICULTY_BLOCK_INDEX_V2           = 700000;
+  const uint64_t LWMA_2_DIFFICULTY_BLOCK_INDEX_V3           = 800000;</code>
+                </pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br />      
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <code>src/CryptoNoteConfig.h</code>&nbsp;&nbsp;Block Emission Speed
+            </div>
+            <div class="card-body">
+              <p>This number governs how much of the total available supply is awarded to miners with each block. Use this generator to look at a graph of how this number changes your emission.</p>
+              <p><em>TurtleCoin has an emission of 25, and takes over 100 years to emit the last coin. The minimum and fastest number you can use is 9.</em></p>
+                <pre class="text-white bg-dark">
+                  <code>
+  const unsigned EMISSION_SPEED_FACTOR                    = 25;</code>
+                </pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br />
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <code>src/CryptoNoteConfig.h</code>&nbsp;&nbsp;Transaction Fees
+            </div>
+            <div class="card-body">
+              <p>Set the fee in Atomic Units for each transaction.</p>
+              <p><em>If this number is too low, you'll be susceptible to transaction spamming attacks.</em></p>
+                <pre class="text-white bg-dark">
+                  <code>
+  const uint64_t MINIMUM_FEE = UINT64_C(10);</code>
+                </pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br />
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <code>src/CryptoNoteConfig.h</code>&nbsp;&nbsp;Security Mixing Level
+            </div>
+            <div class="card-body">
+              <p>Mixin determines how private transactions are, however, due to the way a transaction must match inputs from previous transactions, a high mixin on a new network can cause transactions to fail. Thus, we would suggest starting off with some reasonably limits, still allowing 0 mixin, and increasing the minimum mixin later.</p>
+              <p>Change the values below to suit the needs of your network. It is strongly recommended to make mixin a static number.</p>
+                <pre class="text-white bg-dark">
+                  <code>
+  const uint64_t MINIMUM_MIXIN_V1                      = 0;
+  const uint64_t MAXIMUM_MIXIN_V1                      = 100;
+
+  const uint64_t MINIMUM_MIXIN_V2                      = 7;
+  const uint64_t MAXIMUM_MIXIN_V2                      = 7;
+
+  const uint64_t MINIMUM_MIXIN_V3                      = 3;
+  const uint64_t MAXIMUM_MIXIN_V3                      = 3;
+
+  /* The heights to activate the mixin limits at                     */
+  const uint32_t MIXIN_LIMITS_V1_HEIGHT                = 440000;
+  const uint32_t MIXIN_LIMITS_V2_HEIGHT                = 620000;
+  const uint32_t MIXIN_LIMITS_V3_HEIGHT                = 800000;
+
+  /* The mixin to use by default with zedwallet and turtle-service   */
+  /* DEFAULT_MIXIN_V0 is the mixin used before MIXIN_LIMITS_V1_HEIGHT*/
+  /* is started                                                      */
+
+  const uint64_t DEFAULT_MIXIN_V0                      = 3;
+  const uint64_t DEFAULT_MIXIN_V1                      = MAXIMUM_MIXIN_V1;
+  const uint64_t DEFAULT_MIXIN_V2                      = MAXIMUM_MIXIN_V2;
+  const uint64_t DEFAULT_MIXIN_V3                      = MAXIMUM_MIXIN_V3;</code>
+                </pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br />
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <code>src/CryptoNoteConfig.h</code>&nbsp;&nbsp;Dust Limits
+            </div>
+            <div class="card-body">
+              <p>Dust is the word for the smallest pieces of a coin that are too small to be bothered with including in a block. Amounts lower than this will not be spendable. This number is measured in Atomic Units.</p>
+              <p>Lowering dust to 0 can fatten transactions somewhat, and also make some transactions hang around in the memory pool waiting to be processed because they can't be mixed with the mixin level you've set because the network can't find inputs of a mathing size. Use <a href="https://github.com/turtlecoin/turtlecoin/blob/development/scripts/makechange.py">this script</a> to generate odd-sized inputs to help clear your memory pool, or consider using a <a href="https://github.com/turtlecoin/rainborg">tipping bot</a> heavily to break up transactions into uneven numbers.</p>
+                <pre class="text-white bg-dark">
+                  <code>
+  const uint64_t DEFAULT_DUST_THRESHOLD = UINT64_C(10);
+  const uint64_t DEFAULT_DUST_THRESHOLD_V2 = UINT64_C(0);
+  const uint32_t DUST_THRESHOLD_V2_HEIGHT = MIXIN_LIMITS_V2_HEIGHT;</code>
+                </pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br />
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <code>src/CryptoNoteConfig.h</code>&nbsp;&nbsp;Hashing Algorithm
+            </div>
+            <div class="card-body">
+              <p>We forked to the Cryptonight Lite Variant 1 hashing algorithm to defeat ASIC minering at height 350,000. If you want to be an ASIC mined coin, make this number very high. If you don't want to be ASIC mined, set this number to 3.</p>
+              <p>ASIC is not inherently bad, it will allow you to acheive a relatively high hashrate fairly easily. Consider supporting ASIC if you have a very low block time.</p>
+                <pre class="text-white bg-dark">
+                  <code>
+  const uint32_t UPGRADE_HEIGHT_V4 = 350000;
+</code>
+                </pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br />
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <code>src/CryptoNoteConfig.h</code>&nbsp;&nbsp;Fork Monitor Heights
+            </div>
+            <div class="card-body">
+              <p>When you type <code>status</code> in the daemon window, you get a status monitor telling you how long until the next fork upgrade. This signals to users that they need to upgrade their software. This is set manually with a list of heights. Set those according to your custom fork schedule.</p>
+                <pre class="text-white bg-dark">
+                  <code>
+  /* Block heights we are going to have hard forks at */
+  const uint64_t FORK_HEIGHTS[] =
+  {
+      187000,  // 0
+      350000,  // 1
+      440000,  // 2
+      620000,  // 3
+      700000,  // 4
+      800000,  // 5 *you are here*
+      1000000, // 6
+      1200000, // 7
+      1400000, // 8
+      1600000, // 9
+      1800000, // 10
+      2000000, // 11
+  };</code>
+                </pre>
+                <pre class="text-white bg-dark">
+                  <code>
+  const uint64_t SOFTWARE_SUPPORTED_FORK_INDEX = 5;</code>
+                </pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br />
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <code>src/CryptoNoteConfig.h</code>&nbsp;&nbsp;Network ID
+            </div>
+            <div class="card-body">
+              <p>This is the signature of your network. Not changing this risks of collisions with the TurtleCoin network if you'd encounter any of our peers.</p>
+                <pre class="text-white bg-dark"><code>
+  const static   boost::uuids::uuid CRYPTONOTE_NETWORK         =
+  {
+      {  0xb5, 0x0c, 0x4a, 0x6c, 0xcf, 0x52, 0x57, 0x41, 0x65, 0xf9, 0x91, 0xa4, 0xb6, 0xc1, 0x43, 0xe9  }
+  };</code>
+                </pre>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <code>src/CryptoNoteConfig.h</code>&nbsp;&nbsp;Blockchain Cache Folder
+            </div>
+            <div class="card-body">
+              <p>This is the hidden folder in your home directory that holds your blockchain and p2p peer data.</p>
+                <pre class="text-white bg-dark">
+                  <code>
+  const char     CRYPTONOTE_NAME[]                    = "TurtleCoin";</code>
+                </pre>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <code>src/CryptoNoteConfig.h</code>&nbsp;&nbsp;Seed Nodes
+            </div>
+            <div class="card-body">
+              <p>These are the first point of entry for new users. They are machines that are running full daemons that serve up the first download of the blockchain data for peers just joining the network. The minimum is 1, but you ideally have many.</p>
+              <p>There is no risk in allowing community members to host seed nodes, and it is advisable to allow the community to share this role.</p>
+                <pre class="text-white bg-dark">
+                  <code>
+  const char* const SEED_NODES[] = {
+    "206.189.142.142:11897",//rock
+    "145.239.88.119:11999", //cision
+    "142.44.242.106:11897", //tom
+    "165.227.252.132:11897" //iburnmycd };</code>
+                </pre>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <code>src/CryptoNoteConfig.h</code>&nbsp;&nbsp;P2P and RPC Ports
+            </div>
+            <div class="card-body">
+              <p>Set these according to your preferences.</p>
+                <pre class="text-white bg-dark">
+                  <code>
+  const int      P2P_DEFAULT_PORT                       =  11897;
+  const int      RPC_DEFAULT_PORT                       =  11898;</code>
+                </pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br />
+    <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <code>src/CryptoNoteConfig.h</code>&nbsp;&nbsp;Software Update URL
+            </div>
+            <div class="card-body">
+              <p>Set this according to your preferences.</p>
+                <pre class="text-white bg-dark">
+                  <code>
+  const char     LATEST_VERSION_URL[]   = "http://latest.turtlecoin.lol";</code>
+                </pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br />
+      
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <code>src/CryptoNoteCheckpoints.h</code>&nbsp;&nbsp;Checkpoints
+            </div>
+            <div class="card-body">
+              <p>You likely don't have any checkpoints yet, so remove everything in this file.</p>
+                <pre class="text-white bg-dark">
+                  <code>
+  ** delete everything in this file **</code>
+                </pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br />      
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <code>src/zedwallet/WalletConfig.h</code>&nbsp;&nbsp;CLI Wallet Config
+            </div>
+            <div class="card-body">
+              <p>Set these parameters to suit your network.</p>
+                <pre class="text-white bg-dark">
+                  <code>
+  /* Make sure everything in here is const - or it won't compile! */
+  namespace WalletConfig
+  {
+      /* The prefix your coins address starts with */
+      const std::string addressPrefix = "TRTL";
+
+      /* Your coins 'Ticker', e.g. Monero = XMR, Bitcoin = BTC */
+      const std::string ticker = "TRTL";
+
+      /* The filename to output the CSV to in save_csv */
+      const std::string csvFilename = "transactions.csv";
+
+      /* The filename to read+write the address book to - consider starting with
+         a leading '.' to make it hidden under mac+linux */
+      const std::string addressBookFilename = ".addressBook.json";
+
+      /* The name of your deamon */
+      const std::string daemonName = "TurtleCoind";
+
+      /* The name to call this wallet */
+      const std::string walletName = "zedwallet";
+
+      /* The name of service/walletd, the programmatic rpc interface to a
+         wallet */
+      const std::string walletdName = "turtle-service";
+
+      /* The full name of your crypto */
+      const std::string coinName = std::string(CryptoNote::CRYPTONOTE_NAME);
+
+      /* Where can your users contact you for support? E.g. discord */
+      const std::string contactLink = "http://chat.turtlecoin.lol";</code>
+                </pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br />
+
+      
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <code>src/zedwallet/WalletConfig.h</code>&nbsp;&nbsp;Address Length
+            </div>
+            <div class="card-body">
+              <p>Your address length should be 95 + the number of letters in your address prefix.</p>
+                <pre class="text-white bg-dark">
+                  <code>
+  /* The length of a standard address for your coin */
+  const long unsigned int standardAddressLength = 99;</code>
+                </pre>
+            </div>
+          </div>
+        </div>
+      </div>  
+
+      <br />
+
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <code>src/zedwallet/WalletConfig.h</code>&nbsp;&nbsp;Minimum Transaction Size
+            </div>
+            <div class="card-body">
+              <p>This is measured in Atomic Units</p>
+                <pre class="text-white bg-dark">
+                  <code>
+  /* The minimum amount allowed to be sent - usually 1 (in ATOMIC units!) */
+  const uint64_t minimumSend = 1;</code>
+                </pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br />
+
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <code>src/zedwallet/WalletConfig.h</code>&nbsp;&nbsp;Allow Zero Mixin
+            </div>
+            <div class="card-body">
+              <p>Do you allow zero mixin transactions on your network?</p>
+                <pre class="text-white bg-dark">
+                  <code>
+  /* Is a mixin of zero disabled on your network? */
+  const bool mixinZeroDisabled = true;</code>
+                </pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div> <!-- main container -->
 
 
     <!-- Optional JavaScript -->
