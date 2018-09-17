@@ -28,6 +28,8 @@
         <div class="col">
           <h1 class="display-4">Advanced Parameters</h1>
           <hr />
+          <br>
+          <h3>Premine & Genesis TX Hex</h3>
           <p>These are extra things you can do with your network, like having a premine and altering the hashing algorithm.</p>
         </div>
       </div>
@@ -66,6 +68,60 @@
         </div>
       </div>
       <br />
+          <h3>Alternate Hashing Algorithms</h3>
+          <p>Just like when we changed from standard CryptoNight to CryptoNight Light Variant 1, you too can change a few parameters, or rewrite them completely to achieve different results with the hashing algorithm.</p>
+          <p>Be cautious, however, you can input bad values here that will yield disastrous results if you aren't careful. It is advised to do extensive testing and gain the opinions of many before launching any altered parameters.</p>
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <code>src/crypto/slow-hash.c</code>&nbsp;&nbsp;Basic Hashing Algorithm Alterations
+            </div>
+            <div class="card-body">
+              <p>In this next block of code, you can see subtle differences to the hashing algorithm that differentiates the CN Light V1 algo from normal CN hashing. This change effectively doubled the hashpower of the network.</p>
+              <p>Changes that decrease the amount of iterations tend to favor CPUs and increasing the amount of iterations favors GPUs. Altering the scratchpad inconsiderately or incongruously opens the 7th gate of hell, beware.</p>
+                <pre class="text-white bg-dark"><code>
+  // Standard Cryptonight Definitions
+  #define MEMORY                 2097152 // 2MB scratchpad 2^21
+  #define ITER                   1048576 // 2^20
+  #define ITER_Divided           524288 // 2^19
+  #define CN_INIT                (MEMORY / INIT_SIZE_BYTE)
+  #define CN_AES_INIT            (MEMORY / AES_BLOCK_SIZE)
+
+  // Cryptonight Night Definitions
+  #define MEMORY_Light           1048576 // 1MB scratchpad 2^20
+  #define ITER_Light             524288 // 2^19
+  #define ITER_Light_Divided     262144 // 2^18
+  #define CN_LIGHT_INIT          (MEMORY_Light / INIT_SIZE_BYTE)
+  #define CN_LIGHT_AES_INIT      (MEMORY_Light / AES_BLOCK_SIZE)</code>
+                </pre>
+                <p><em>Change these parameters at your own risk to suit your purposes.</em></p>
+                <p>This is the simplest hashing modification you can make. It's not recommended, and it can often break everything, but a skillful eye can create something that works. Do not expect this to work on the first shot.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <code>src/crypto/slow-hash.c</code>&nbsp;&nbsp;Advanced Hashing Algorithm Alterations
+            </div>
+            <div class="card-body">
+              <p>In other examples, we see advanced alterations to the hashing algorithm that dynamically change variables like scratchpad and iterations. You can see a TurtleCoin-native hashing algorithm called CN SoftShell here: <a href="https://github.com/brandonlehmann/turtlecoin/commit/968017c55275057e306f92b32412d81781819d9f">Cryptonight SoftShell</a></p>
+              <p>A word of warning, this code has not been tested for longterm operation. We'd love to see someone use it though.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="float-right" style="margin-bottom: 100px">
+        <h3><a href="https://turtlecoin.github.io/index3.html">Next Section >></a></h3>
+        <h6>Marketing Presence</h6>
+    </div>
+    <div class="fixed-bottom" style="background-color: #fff;"> <center>Copyright 2018 TurtleCoin Developers</center></div>
+
 </div>
 
 
