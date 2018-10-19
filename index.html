@@ -40,7 +40,7 @@
         <div class="col">
           <div class="card">
             <div class="card-header">
-              <code>src/CryptoNoteConfig.h</code>&nbsp;&nbsp;Network ID
+              <code>src/config/CryptoNoteConfig.h</code>&nbsp;&nbsp;Network ID
             </div>
             <div class="card-body">
                 <pre class="text-white bg-dark"><code>
@@ -58,7 +58,7 @@
         <div class="col">
           <div class="card">
             <div class="card-header">
-              <code>src/CryptoNoteConfig.h</code>&nbsp;&nbsp;Blockchain Cache Folder
+              <code>src/config/CryptoNoteConfig.h</code>&nbsp;&nbsp;Blockchain Cache Folder
             </div>
             <div class="card-body">
                 <pre class="text-white bg-dark">
@@ -74,7 +74,7 @@
         <div class="col">
           <div class="card">
             <div class="card-header">
-              <code>src/CryptoNoteConfig.h</code>&nbsp;&nbsp;Seed Nodes
+              <code>src/config/CryptoNoteConfig.h</code>&nbsp;&nbsp;Seed Nodes
             </div>
             <div class="card-body">
                 <pre class="text-white bg-dark">
@@ -159,7 +159,7 @@
         <div class="col">
           <div class="card">
             <div class="card-header">
-              <code>src/CryptoNoteConfig.h</code>&nbsp;&nbsp;Block Time
+              <code>src/config/CryptoNoteConfig.h</code>&nbsp;&nbsp;Block Time
             </div>
             <div class="card-body">
               <p>Block time is measured in seconds. TRTL has 30 second blocks.</p>
@@ -178,7 +178,7 @@
         <div class="col">
           <div class="card">
             <div class="card-header">
-              <code>src/CryptoNoteConfig.h</code>&nbsp;&nbsp;Address Prefix
+              <code>src/config/CryptoNoteConfig.h</code>&nbsp;&nbsp;Address Prefix
             </div>
             <div class="card-body">
               <p>TurtleCoin has an address prefix of <code>TRTL</code>, and every wallet address generated begins with the wallet prefix.</p>
@@ -198,7 +198,7 @@
         <div class="col">
           <div class="card">
             <div class="card-header">
-              <code>src/CryptoNoteConfig.h</code>&nbsp;&nbsp;Unlock Mined Coins
+              <code>src/config/CryptoNoteConfig.h</code>&nbsp;&nbsp;Unlock Mined Coins
             </div>
             <div class="card-body">
               <p>Mined coins need to wait about 20 minutes before being awarded to miners. Adjust the number of blocks in this parameter to suit your coin. TRTL has 30 second blocks, so 40 means 20 minutes.</p>
@@ -216,7 +216,7 @@
         <div class="col">
           <div class="card">
             <div class="card-header">
-              <code>src/CryptoNoteConfig.h</code>&nbsp;&nbsp;Coin Supply
+              <code>src/config/CryptoNoteConfig.h</code>&nbsp;&nbsp;Coin Supply
             </div>
             <div class="card-body">
               <p>Coin supply is measured in Atomic Units. The amount of decimal places you have will determine how many coins this number truly represents. This is the minimum amount of divisible units in your network.</p>
@@ -236,7 +236,7 @@
         <div class="col">
           <div class="card">
             <div class="card-header">
-              <code>src/CryptoNoteConfig.h</code>&nbsp;&nbsp;Decimal Points
+              <code>src/config/CryptoNoteConfig.h</code>&nbsp;&nbsp;Decimal Points
             </div>
             <div class="card-body">
               <p>Change this number to suit your needs.</p>
@@ -256,7 +256,7 @@
         <div class="col">
           <div class="card">
             <div class="card-header">
-              <code>src/CryptoNoteConfig.h</code>&nbsp;&nbsp;Difficulty Algorithm Milestones
+              <code>src/config/CryptoNoteConfig.h</code>&nbsp;&nbsp;Difficulty Algorithm Milestones
             </div>
             <div class="card-body">
               <p>These are different versions of our difficulty algorithm, and the heights at which you'll upgrade to each one. It is best to activate them in the first 4 blocks of your chain so that you can get to the most recent version sooner.</p>
@@ -280,7 +280,7 @@
         <div class="col">
           <div class="card">
             <div class="card-header">
-              <code>src/CryptoNoteConfig.h</code>&nbsp;&nbsp;Block Emission Speed
+              <code>src/config/CryptoNoteConfig.h</code>&nbsp;&nbsp;Block Emission Speed
             </div>
             <div class="card-body">
               <p>This number governs how much of the total available supply is awarded to miners with each block. Use this generator to look at a graph of how this number changes your emission.</p>
@@ -299,7 +299,7 @@
         <div class="col">
           <div class="card">
             <div class="card-header">
-              <code>src/CryptoNoteConfig.h</code>&nbsp;&nbsp;Transaction Fees
+              <code>src/config/CryptoNoteConfig.h</code>&nbsp;&nbsp;Transaction Fees
             </div>
             <div class="card-body">
               <p>Set the fee in Atomic Units for each transaction.</p>
@@ -318,7 +318,7 @@
         <div class="col">
           <div class="card">
             <div class="card-header">
-              <code>src/CryptoNoteConfig.h</code>&nbsp;&nbsp;Security Mixing Level
+              <code>src/config/CryptoNoteConfig.h</code>&nbsp;&nbsp;Security Mixing Level
             </div>
             <div class="card-body">
               <p>Mixin determines how private transactions are, however, due to the way a transaction must match inputs from previous transactions, a high mixin on a new network can cause transactions to fail. Thus, we would suggest starting off with some reasonably limits, still allowing 0 mixin, and increasing the minimum mixin later.</p>
@@ -358,7 +358,7 @@
         <div class="col">
           <div class="card">
             <div class="card-header">
-              <code>src/CryptoNoteConfig.h</code>&nbsp;&nbsp;Dust Limits
+              <code>src/config/CryptoNoteConfig.h</code>&nbsp;&nbsp;Dust Limits
             </div>
             <div class="card-body">
               <p>Dust is the word for the smallest pieces of a coin that are too small to be bothered with including in a block. Amounts lower than this will not be spendable. This number is measured in Atomic Units.</p>
@@ -379,7 +379,7 @@
         <div class="col">
           <div class="card">
             <div class="card-header">
-              <code>src/CryptoNoteConfig.h</code>&nbsp;&nbsp;Hashing Algorithm
+              <code>src/config/CryptoNoteConfig.h</code>&nbsp;&nbsp;Hashing Algorithm
             </div>
             <div class="card-body">
               <p>We forked to the Cryptonight Lite Variant 1 hashing algorithm to defeat ASIC minering at height 350,000. If you want to be an ASIC mined coin, make this number very high. If you don't want to be ASIC mined, set this number to 3.</p>
@@ -399,7 +399,7 @@
         <div class="col">
           <div class="card">
             <div class="card-header">
-              <code>src/CryptoNoteConfig.h</code>&nbsp;&nbsp;Fork Monitor Heights
+              <code>src/config/CryptoNoteConfig.h</code>&nbsp;&nbsp;Fork Monitor Heights
             </div>
             <div class="card-body">
               <p>When you type <code>status</code> in the daemon window, you get a status monitor telling you how long until the next fork upgrade. This signals to users that they need to upgrade their software. This is set manually with a list of heights. Set those according to your custom fork schedule.</p>
@@ -436,7 +436,7 @@
         <div class="col">
           <div class="card">
             <div class="card-header">
-              <code>src/CryptoNoteConfig.h</code>&nbsp;&nbsp;Network ID
+              <code>src/config/CryptoNoteConfig.h</code>&nbsp;&nbsp;Network ID
             </div>
             <div class="card-body">
               <p>This is the signature of your network. Not changing this risks of collisions with the TurtleCoin network if you'd encounter any of our peers.</p>
@@ -455,7 +455,7 @@
         <div class="col">
           <div class="card">
             <div class="card-header">
-              <code>src/CryptoNoteConfig.h</code>&nbsp;&nbsp;Blockchain Cache Folder
+              <code>src/config/CryptoNoteConfig.h</code>&nbsp;&nbsp;Blockchain Cache Folder
             </div>
             <div class="card-body">
               <p>This is the hidden folder in your home directory that holds your blockchain and p2p peer data.</p>
@@ -472,7 +472,7 @@
         <div class="col">
           <div class="card">
             <div class="card-header">
-              <code>src/CryptoNoteConfig.h</code>&nbsp;&nbsp;Seed Nodes
+              <code>src/config/CryptoNoteConfig.h</code>&nbsp;&nbsp;Seed Nodes
             </div>
             <div class="card-body">
               <p>These are the first point of entry for new users. They are machines that are running full daemons that serve up the first download of the blockchain data for peers just joining the network. The minimum is 1, but you ideally have many.</p>
@@ -494,7 +494,7 @@
         <div class="col">
           <div class="card">
             <div class="card-header">
-              <code>src/CryptoNoteConfig.h</code>&nbsp;&nbsp;P2P and RPC Ports
+              <code>src/config/CryptoNoteConfig.h</code>&nbsp;&nbsp;P2P and RPC Ports
             </div>
             <div class="card-body">
               <p>Set these according to your preferences.</p>
@@ -513,7 +513,7 @@
         <div class="col">
           <div class="card">
             <div class="card-header">
-              <code>src/CryptoNoteConfig.h</code>&nbsp;&nbsp;Software Update URL
+              <code>src/config/CryptoNoteConfig.h</code>&nbsp;&nbsp;Software Update URL
             </div>
             <div class="card-body">
               <p>Set this according to your preferences.</p>
@@ -550,7 +550,7 @@
         <div class="col">
           <div class="card">
             <div class="card-header">
-              <code>src/zedwallet/WalletConfig.h</code>&nbsp;&nbsp;CLI Wallet Config
+              <code>src/config/WalletConfig.h</code>&nbsp;&nbsp;CLI Wallet Config
             </div>
             <div class="card-body">
               <p>Set these parameters to suit your network.</p>
@@ -600,7 +600,7 @@
         <div class="col">
           <div class="card">
             <div class="card-header">
-              <code>src/zedwallet/WalletConfig.h</code>&nbsp;&nbsp;Address Length
+              <code>src/config/WalletConfig.h</code>&nbsp;&nbsp;Address Length
             </div>
             <div class="card-body">
               <p>Your address length should be 95 + the number of letters in your address prefix.</p>
@@ -620,7 +620,7 @@
         <div class="col">
           <div class="card">
             <div class="card-header">
-              <code>src/zedwallet/WalletConfig.h</code>&nbsp;&nbsp;Minimum Transaction Size
+              <code>src/config/WalletConfig.h</code>&nbsp;&nbsp;Minimum Transaction Size
             </div>
             <div class="card-body">
               <p>This is measured in Atomic Units</p>
@@ -640,7 +640,7 @@
         <div class="col">
           <div class="card">
             <div class="card-header">
-              <code>src/zedwallet/WalletConfig.h</code>&nbsp;&nbsp;Allow Zero Mixin
+              <code>src/config/WalletConfig.h</code>&nbsp;&nbsp;Allow Zero Mixin
             </div>
             <div class="card-body">
               <p>Do you allow zero mixin transactions on your network?</p>
