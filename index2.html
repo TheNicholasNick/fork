@@ -33,12 +33,34 @@
           <p>These are extra things you can do with your network, like having a premine and altering the hashing algorithm.</p>
         </div>
       </div>
-
+     <div class="row">
+       <div class="col">
+         <div class="card"
+              <div class="card-header">
+         Premines, explained
+       </div>
+       <div class="card-body">
+         <p>The order of the steps in executing a premine properly matters. These steps were contributed by Iburnmycd and Mestopholis.</p>
+          <ol>
+            <li>generate wallet</li>
+            <li>generate the new genesis hash with the daemon</li>
+            <li>edit the CryptoNoteConfig.h to include your new genesis transaction hex</li>
+            <li>recompile everything</li>
+            <li>start node 1</li>
+            <li>mine a block</li> 
+            <li>start node 2</li>
+            <li>mine some more blocks</li>
+            <li>open the wallet</li>
+            <li>Tada!</li>
+         </ol>
+       </div>
+     </div>
+  </div>
       <div class="row">
         <div class="col">
           <div class="card">
             <div class="card-header">
-              <code>src/CryptoNoteConfig.h</code>&nbsp;&nbsp;Premine & Genesis Reward
+              <code>src/config/CryptoNoteConfig.h</code>&nbsp;&nbsp;Premine & Genesis Reward
             </div>
             <div class="card-body">
             	<p>This is where you define how many Atomic Units to reward the miner of the first block. To be smart, you would also hard code the address for this reward so that someone monitoring your commits doesn't compile and mine it first.</p>
@@ -54,7 +76,7 @@
         <div class="col">
           <div class="card">
             <div class="card-header">
-              <code>src/CryptoNoteConfig.h</code>&nbsp;&nbsp;Premine Genesis TX Hex
+              <code>src/config/CryptoNoteConfig.h</code>&nbsp;&nbsp;Premine Genesis TX Hex
             </div>
             <div class="card-body">
             	<p>This is the transaction hex of the first block, which has to be manually encoded.</p>
