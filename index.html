@@ -535,10 +535,10 @@
               <code>src/CryptoNoteCheckpoints.h</code>&nbsp;&nbsp;Checkpoints
             </div>
             <div class="card-body">
-              <p>You likely don't have any checkpoints yet, so remove everything in this file.</p>
+              <p>You likely don't have any checkpoints yet, so remove all the checkpoints.</p>
                 <pre class="text-white bg-dark">
                   <code>
-  ** delete everything in this file **</code>
+const std::initializer_list<CheckpointData> CHECKPOINTS = {};</code>
                 </pre>
             </div>
           </div>
@@ -678,23 +678,55 @@
               <p>Open an Ubuntu LTS terminal prompt, and type the following commands.</p>
                 <pre class="text-white bg-dark">
                   <code>
-  sudo apt update</code>
+  sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y</code>
                 </pre>
                 <pre class="text-white bg-dark">
                   <code>
-  sudo apt upgrade -y</code>
+  sudo apt-get update</code>
                 </pre>
                 <pre class="text-white bg-dark">
                   <code>
-  sudo apt-get install -y build-essential python-dev gcc g++ git cmake libboost-all-dev</code>
+  sudo apt-get install aptitude -y</code>
                 </pre>
                 <pre class="text-white bg-dark">
                   <code>
-  mkdir build && cd build</code>
+  sudo aptitude install -y build-essential g++-8 gcc-8 git libboost-all-dev python-pip</code>
                 </pre>
                 <pre class="text-white bg-dark">
                   <code>
-  cmake .. && make</code>
+  sudo pip install cmake</code>
+                </pre>
+                <pre class="text-white bg-dark">
+                  <code>
+  export CC=gcc-8</code>
+                </pre>
+                <pre class="text-white bg-dark">
+                  <code>
+  export CXX=g++-8</code>
+                </pre>
+                <pre class="text-white bg-dark">
+                  <code>
+  git clone -b master --single-branch https://github.com/turtlecoin/turtlecoin</code>
+                </pre>
+                <pre class="text-white bg-dark">
+                  <code>
+  cd turtlecoin</code>
+                </pre>
+                <pre class="text-white bg-dark">
+                  <code>
+  mkdir build</code>
+                </pre>
+                <pre class="text-white bg-dark">
+                  <code>
+  cd build</code>
+                </pre>
+               <pre class="text-white bg-dark">
+                  <code>
+  cmake ..</code>
+                </pre>
+               <pre class="text-white bg-dark">
+                  <code>
+  make</code>
                 </pre>
                 <p>The compile process can take up to an hour on slower systems. You will need adequate RAM or Swap space in order to compile without errors. Compiling on a cheap VPS will often give Swap errors because of this.</p>
             </div>
