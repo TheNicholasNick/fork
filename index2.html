@@ -33,7 +33,7 @@
           <p>These are extra things you can do with your network, like having a premine and altering the hashing algorithm.</p>
          <p>The order of the steps in executing a premine properly matters. These steps were contributed by Iburnmycd and Mestopholis.</p>
           <ol>
-            <li>generate wallet</li>
+            <li>generate wallet (close the wallet, just need an address)</li>
             <li>generate the new genesis hash with the daemon</li>
             <li>edit the CryptoNoteConfig.h to include your new genesis transaction hex</li>
             <li>recompile everything</li>
@@ -41,7 +41,7 @@
             <li>mine a block</li> 
             <li>start node 2</li>
             <li>mine some more blocks</li>
-            <li>open the wallet</li>
+            <li>open the wallet (this should be the first time the wallet is connecting to daemon, reset/recreate from keys if not getting premine coins)</li>
             <li>Tada!</li>
          </ol>
        </div>
